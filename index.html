@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sparked</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    .video {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-bottom: 1px solid #333;
+      padding: 20px;
+    }
+
+    video {
+      width: 100%;
+      max-height: 60vh;
+      border-radius: 12px;
+    }
+
+    button, input, textarea {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #00f2ea;
+      color: black;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 80%;
+      height: 80px;
+      resize: none;
+    }
+
+    .nuevo-video {
+      margin-top: 20px;
+      border: 2px dashed #00f2ea;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video">
+    <video src="video1.mp4" controls autoplay muted loop></video>
+    <p>Video original</p>
+  </div>
+
+  <div class="video">
+    <h2>🎨 Crea tu video con IA</h2>
+    <textarea id="prompt" placeholder="Escribe tu idea de video (ej: un dragón bailando reguetón)..."></textarea>
+    <button onclick="generarVideo()">Generar video IA</button>
+
+    <div id="resultado" class="nuevo-video" style="display:none;">
+      <p><strong>Tu video IA:</strong></p>
+      <p id="descripcion"></p>
+      <video src="video-generado.mp4" controls autoplay muted loop></video>
+    </div>
+  </div>
+
+  <script>
+    function generarVideo() {
+      const prompt = document.getElementById("prompt").value;
+      const descripcion = document.getElementById("descripcion");
+      const resultado = document.getElementById("resultado");
+
+      if (prompt.trim() === "") {
+        alert("Escribe una idea primero 😉");
+        return;
+      }
+
+      descripcion.innerText = `"${prompt}" (simulado por IA 🤖)`;
+      resultado.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
